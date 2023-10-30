@@ -1,1 +1,1 @@
-export { default } from '@fleetbase/pallet-engine/models/inventory';
+export { default } from '@atomizedev/pallet-engine/models/inventory';

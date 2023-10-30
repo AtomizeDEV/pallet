@@ -1,1 +1,1 @@
-export { default } from '@fleetbase/pallet-engine/templates/home';
+export { default } from '@atomizedev/pallet-engine/templates/home';

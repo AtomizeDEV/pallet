@@ -1,1 +1,1 @@
-export { default } from '@fleetbase/pallet-engine/adapters/stock-transaction';
+export { default } from '@atomizedev/pallet-engine/adapters/stock-transaction';

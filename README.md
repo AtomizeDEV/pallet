@@ -67,7 +67,7 @@ composer require fleetbase/pallet
 Install the Ember.js Engine/Addon:
 
 ```bash
-pnpm install @fleetbase/pallet
+pnpm install @atomizedev/pallet
 ```
 
 ## Usage

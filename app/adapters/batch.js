@@ -1,1 +1,1 @@
-export { default } from '@fleetbase/pallet-engine/adapters/batch';
+export { default } from '@atomizedev/pallet-engine/adapters/batch';
