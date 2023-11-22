@@ -15,7 +15,7 @@
     "fleetbase": {
         "route": "pallet"
     },
-    "repository": "https://github.com/fleetbase/pallet",
+    "repository": "https://github.com/atomizedev/pallet",
     "license": "MIT",
     "author": "Fleetbase Pte Ltd <hello@fleetbase.io>",
     "directories": {

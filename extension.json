@@ -2,7 +2,7 @@
     "name": "Pallet",
     "version": "0.0.1",
     "description": "Inventory & Warehouse Management Extension for Fleetbase",
-    "repository": "https://github.com/fleetbase/pallet",
+    "repository": "https://github.com/atomizedev/pallet",
     "license": "MIT",
     "author": "Fleetbase Pte Ltd <hello@fleetbase.io>",
     "engine": "package.json",
