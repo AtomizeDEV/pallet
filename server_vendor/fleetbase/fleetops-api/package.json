@@ -1,6 +1,6 @@
 {
     "name": "@atomizedev/fleetops-engine",
-    "version": "0.3.5",
+    "version": "0.2.9",
     "description": "Fleet & Transport Management Extension for Fleetbase",
     "fleetbase": {
         "route": "fleet-ops",
@@ -15,9 +15,9 @@
         "ember-addon",
         "ember-engine"
     ],
-    "repository": "https://github.com/fleetbase/fleetops",
+    "repository": "https://github.com/atomizedev/fleetops",
     "license": "MIT",
-    "author": "Fleetbase Pte Ltd <hello@atomizedev.io>",
+    "author": "Fleetbase Pte Ltd <hello@fleetbase.io>",
     "directories": {
         "app": "app",
         "addon": "addon",
@@ -36,13 +36,13 @@
         "test:ember": "ember test",
         "test:ember-compatibility": "ember try:each",
         "publish:npm": "npm config set registry https://registry.npmjs.org/ && npm publish",
-        "publish:github": "npm config set '@atomizedev:registry' https://npm.pkg.github.com/ && npm publish"
+        "publish:github": "npm config set '@fleetbase:registry' https://npm.pkg.github.com/ && npm publish"
     },
     "dependencies": {
-        "@atomizedev/ember-core": "^0.1.8",
-        "@atomizedev/ember-ui": "^0.2.6",
-        "@atomizedev/fleetops-data": "^0.1.5",
-        "@atomizedev/leaflet-routing-machine": "^3.2.16",
+        "@atomizedev/ember-core": "git@github.com/AtomizeDEV/ember-core.git",
+        "@atomizedev/ember-ui": "git@github.com/AtomizeDEV/ember-ui.git",
+        "@atomizedev/fleetops-data": "git@github.com/AtomizeDEV/fleetops-data.git",
+        "@fleetbase/leaflet-routing-machine": "^3.2.16",
         "@fortawesome/ember-fontawesome": "^0.4.1",
         "@fortawesome/fontawesome-svg-core": "^6.4.0",
         "@fortawesome/free-solid-svg-icons": "^6.4.0",

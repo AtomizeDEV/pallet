@@ -1,5 +1,5 @@
 {
-    "name": "fleetbase/core-api",
+    "name": "atomizedev/core-api",
     "version": "1.3.2",
     "description": "Core Framework and Resources for Fleetbase API",
     "keywords": [
@@ -10,11 +10,11 @@
     "authors": [
         {
             "name": "Fleetbase Pte Ltd.",
-            "email": "hello@atomizedev.io"
+            "email": "hello@fleetbase.io"
         },
         {
             "name": "Ronald A. Richardson",
-            "email": "ron@atomizedev.io"
+            "email": "ron@fleetbase.io"
         }
     ],
     "require": {

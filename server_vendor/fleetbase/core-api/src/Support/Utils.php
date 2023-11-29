@@ -2134,7 +2134,7 @@ class Utils
      *
      * @return string the default "from" email address
      */
-    public static function getDefaultMailFromAddress(?string $default = 'hello@atomizedev.io'): string
+    public static function getDefaultMailFromAddress(?string $default = 'hello@fleetbase.io'): string
     {
         $from = env('MAIL_FROM_ADDRESS', $default);
 
