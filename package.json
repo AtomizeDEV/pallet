@@ -15,9 +15,9 @@
     "fleetbase": {
         "route": "pallet"
     },
-    "repository": "https://github.com/atomizedev/pallet",
+    "repository": "https://github.com/fleetbase/pallet",
     "license": "MIT",
-    "author": "Fleetbase Pte Ltd <hello@fleetbase.io>",
+    "author": "Fleetbase Pte Ltd <hello@atomizedev.io>",
     "directories": {
         "app": "app",
         "addon": "addon",
@@ -36,7 +36,7 @@
         "test:ember": "ember test",
         "test:ember-compatibility": "ember try:each",
         "publish:npm": "npm config set registry https://registry.npmjs.org/ && npm publish",
-        "publish:github": "npm config set '@fleetbase:registry' https://npm.pkg.github.com/ && npm publish"
+        "publish:github": "npm config set '@atomizedev:registry' https://npm.pkg.github.com/ && npm publish"
     },
     "dependencies": {
         "@atomizedev/ember-core": "git@github.com/AtomizeDEV/ember-core.git",
@@ -45,11 +45,14 @@
         "@fortawesome/ember-fontawesome": "^0.4.1",
         "@fortawesome/fontawesome-svg-core": "^6.4.0",
         "@fortawesome/free-solid-svg-icons": "^6.4.0",
-        "ember-intl": "^6.0.0-beta.6",
+        "broccoli-funnel": "^3.0.8",
         "ember-cli-babel": "^7.26.11",
         "ember-cli-htmlbars": "^6.1.0",
+        "ember-intl": "6.0.0-beta.6",
         "ember-radio-button": "^3.0.0-beta.1",
-        "ember-wormhole": "^0.6.0"
+        "ember-wormhole": "^0.6.0",
+        "ember-leaflet": "^5.1.1",
+        "leaflet": "^1.9.4"
     },
     "devDependencies": {
         "@ember/optional-features": "^2.0.0",

@@ -7,6 +7,13 @@ import { task, timeout } from 'ember-concurrency';
 
 export default class ProductsIndexController extends Controller {
     /**
+     * Inject the `contextPanel` service
+     *
+     * @var {Service}
+     */
+    @service contextPanel;
+
+    /**
      * Inject the `notifications` service
      *
      * @var {Service}
@@ -60,7 +67,26 @@ export default class ProductsIndexController extends Controller {
      *
      * @var {Array}
      */
-    queryParams = ['page', 'limit', 'sort', 'query', 'status', 'sku', 'created_at', 'updated_at'];
+    queryParams = [
+        'page',
+        'limit',
+        'sort',
+        'query',
+        'internal_id',
+        'public_id',
+        'supplier',
+        'sku',
+        'created_at',
+        'updated_at',
+        'name',
+        'price',
+        'sale_price',
+        'declared_value',
+        'length',
+        'width',
+        'height',
+        'weight',
+    ];
 
     /**
      * The current page of data being viewed
@@ -91,11 +117,81 @@ export default class ProductsIndexController extends Controller {
     @tracked sku;
 
     /**
-     * The filterable param `status`
+     * The filterable param `name`
      *
      * @var {String}
      */
-    @tracked status;
+    @tracked name;
+
+    /**
+     * The filterable param `product_id`
+     *
+     * @var {String}
+     */
+    @tracked product_id;
+
+    /**
+     * The filterable param `supplier`
+     *
+     * @var {String}
+     */
+    @tracked supplier;
+
+    /**
+     * The filterable param `internal_id`
+     *
+     * @var {String}
+     */
+    @tracked internal_id;
+
+    /**
+     * The filterable param `price`
+     *
+     * @var {String}
+     */
+    @tracked price;
+
+    /**
+     * The filterable param `sale_price`
+     *
+     * @var {String}
+     */
+    @tracked sale_price;
+
+    /**
+     * The filterable param `declared_value`
+     *
+     * @var {String}
+     */
+    @tracked declared_value;
+
+    /**
+     * The filterable param `length`
+     *
+     * @var {String}
+     */
+    @tracked length;
+
+    /**
+     * The filterable param `width`
+     *
+     * @var {String}
+     */
+    @tracked width;
+
+    /**
+     * The filterable param `heigth`
+     *
+     * @var {String}
+     */
+    @tracked heigth;
+
+    /**
+     * The filterable param `weigth`
+     *
+     * @var {String}
+     */
+    @tracked weigth;
 
     /**
      * All columns applicable for orders
@@ -104,10 +200,11 @@ export default class ProductsIndexController extends Controller {
      */
     @tracked columns = [
         {
-            label: 'Name',
+            label: 'Product',
             valuePath: 'name',
-            width: '200px',
-            cellComponent: 'table/cell/anchor',
+            width: '170px',
+            cellComponent: 'cell/product-info',
+            action: this.viewProduct,
             resizable: true,
             sortable: true,
             filterable: true,
@@ -134,17 +231,38 @@ export default class ProductsIndexController extends Controller {
             filterComponent: 'filter/string',
         },
         {
-            label: 'Created At',
+            label: 'Internal ID',
+            valuePath: 'internal_id',
+            cellComponent: 'click-to-copy',
+            width: '120px',
+            resizable: true,
+            sortable: true,
+            filterable: true,
+            filterComponent: 'filter/string',
+        },
+        {
+            label: 'Value',
+            valuePath: 'price',
+            cellComponent: 'click-to-copy',
+            width: '120px',
+            resizable: true,
+            sortable: true,
+            filterable: true,
+            filterComponent: 'filter/string',
+        },
+        {
+            label: ' Date Added',
             valuePath: 'createdAt',
             sortParam: 'created_at',
             width: '10%',
             resizable: true,
             sortable: true,
+            hidden: true,
             filterable: true,
             filterComponent: 'filter/date',
         },
         {
-            label: 'Updated At',
+            label: 'Last Updated',
             valuePath: 'updatedAt',
             sortParam: 'updated_at',
             width: '10%',
@@ -221,23 +339,18 @@ export default class ProductsIndexController extends Controller {
      * @param {Object} options
      * @void
      */
-    @action viewProduct(product, options) {
-        // do code
-        console.log('viewProduct()', product, options);
+    @action viewProduct(product) {
+        return this.transitionToRoute('products.index.details', product);
     }
 
     /**
      * Create a new `product` in modal
      *
-     * @param {Object} options
      * @void
      */
-    @action createProduct(options = {}) {
-        const product = this.store.createRecord('pallet-product');
-
-        return this.editProduct(product, options);
+    @action createProduct() {
+        return this.transitionToRoute('products.index.new');
     }
-
     /**
      * Edit a `product` details
      *
@@ -245,9 +358,8 @@ export default class ProductsIndexController extends Controller {
      * @param {Object} options
      * @void
      */
-    @action async editProduct(product, options = {}) {
-        // do code
-        console.log('editProduct()', product, options);
+    @action async editProduct(product) {
+        return this.transitionToRoute('products.index.edit', product);
     }
 
     /**

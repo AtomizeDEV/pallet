@@ -1,0 +1,70 @@
+<Overlay
+    @onLoad={{this.setOverlayContext}}
+    @position="right"
+    @noBackdrop={{true}}
+    @fullHeight={{true}}
+    @isResizeable={{or this.isResizable @isResizable}}
+    @width={{or this.width @width "600px"}}
+>
+    <Overlay::Header
+        @title={{if this.salesOrder.public_id this.salesOrder.name "New Sales Order"}}
+        @status={{this.salesOrder.public_id}}
+        @hideStatusDot={{true}}
+        @createdAt={{this.salesOrder.createdAt}}
+        @titleWrapperClass="leading-5"
+    >
+        <div class="flex flex-1 justify-end">
+            <Button
+                @icon={{if this.salesOrder.id "save" "check"}}
+                @type="primary"
+                @text={{if this.salesOrder.id "Save Sales Order" "Create Sales Order"}}
+                @onClick={{this.save}}
+                @wrapperClass="mr-2"
+            />
+            {{#if this.salesOrder.id}}
+                <Button @type="default" @icon="file-invoice" @helpText="View sales order details" @onClick={{this.onViewDetails}} @wrapperClass="mr-2" />
+            {{/if}}
+            <Button @type="default" @icon="times" @helpText={{if this.salesOrder.id "Cancel edit sales order" "Cancel new sales order"}} @onClick={{this.onPressCancel}} />
+        </div>
+    </Overlay::Header>
+
+    <Overlay::Body @wrapperClass="new-service-rate-overlay-body px-4 space-y-4 pt-4" @increaseInnerBodyHeightBy={{1000}}>
+        <div class="grid grid-cols-1 text-xs dark:text-gray-100">
+            <InputGroup @name="Customer Type">
+                <div class="fleetbase-model-select fleetbase-power-select ember-model-select">
+                    <PowerSelect
+                        @options={{this.customerType}}
+                        @selected={{this.salesOrder.customerType}}
+                        @onChange={{fn (mut this.salesOrder.customerType)}}
+                        @placeholder="Select customer type"
+                        @triggerClass="form-select form-input"
+                        as |customerType|
+                    >
+                        {{smart-humanize customerType}}
+                    </PowerSelect>
+                </div>
+            </InputGroup>
+            <InputGroup @name="Status">
+                <div class="fleetbase-model-select fleetbase-power-select ember-model-select">
+                    <PowerSelect
+                        @options={{this.statusOptions}}
+                        @selected={{this.salesOrder.status}}
+                        @onChange={{fn (mut this.salesOrder.status)}}
+                        @placeholder="Select sales order status"
+                        @triggerClass="form-select form-input"
+                        as |status|
+                    >
+                        {{smart-humanize status}}
+                    </PowerSelect>
+                </div>
+            </InputGroup>
+            <InputGroup @name="Sales order description">
+                <Textarea @value={{this.salesOrder.description}} aria-label="Description" class="w-full form-input" placeholder="Description" rows={{5}} />
+            </InputGroup>
+            <InputGroup @name="Sales order comments">
+                <Textarea @value={{this.salesOrder.comments}} aria-label="Comments" class="w-full form-input" placeholder="Comments" rows={{5}} />
+            </InputGroup>
+            <InputGroup @name="Delivery date" @type="date" @value={{this.salesOrder.deliveredAt}} />
+        </div>
+    </Overlay::Body>
+</Overlay>
